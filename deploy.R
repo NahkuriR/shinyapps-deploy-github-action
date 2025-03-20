@@ -46,6 +46,7 @@ appFiles <- optional("INPUT_APPFILES")
 appFileManifest <- optional("INPUT_APPFILEMANIFEST")
 appTitle <- optional("INPUT_APPTITLE")
 logLevel <- optional("INPUT_LOGLEVEL")
+forceUpdate <- optional("INPUT_FORCEUPDATE")
 
 # process appFiles
 if (!is.null(appFiles)) {
@@ -57,7 +58,7 @@ cat("checking account info...")
 rsconnect::setAccountInfo(accountName, accountToken, accountSecret)
 cat(" [OK]\n")
 
-force_update <- ifelse(forceUpdate, TRUE, FALSE)
+force_update <- ifelse(forceUpdate == "true", TRUE, FALSE)
 
 # deploy application
 rsconnect::deployApp(
