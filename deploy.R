@@ -57,6 +57,8 @@ cat("checking account info...")
 rsconnect::setAccountInfo(accountName, accountToken, accountSecret)
 cat(" [OK]\n")
 
+force_update <- ifelse(forceUpdate, TRUE, FALSE)
+
 # deploy application
 rsconnect::deployApp(
   appDir = appDir,
@@ -64,5 +66,7 @@ rsconnect::deployApp(
   appFileManifest = appFileManifest,
   appName = appName,
   appTitle = appTitle,
-  account = accountName
+  account = accountName,
+  forceUpdate = force_update,
+  appMode = "shiny"
 )
